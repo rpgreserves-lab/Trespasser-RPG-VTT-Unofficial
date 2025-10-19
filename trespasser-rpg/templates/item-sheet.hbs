@@ -1,0 +1,23 @@
+
+<form class="trespasser sheet item {{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{item.img}}" data-edit="img" title="{{item.name}}"/>
+    <div class="header-fields">
+      <h1><input name="name" type="text" value="{{item.name}}"/></h1>
+      <div class="grid-cols">
+        <label>Quantity</label>
+        <input name="system.quantity" type="number" value="{{system.quantity}}" data-dtype="Number"/>
+        <label>Weight</label>
+        <input name="system.weight" type="number" value="{{system.weight}}" data-dtype="Number"/>
+        <label>Equipped</label>
+        <input type="checkbox" name="system.equipped" {{checked system.equipped}}/>
+      </div>
+    </div>
+  </header>
+  <section class="sheet-body">
+    <fieldset>
+      <legend>Description</legend>
+      {{editor system.description target="system.description" button=true editable=editable}}
+    </fieldset>
+  </section>
+</form>

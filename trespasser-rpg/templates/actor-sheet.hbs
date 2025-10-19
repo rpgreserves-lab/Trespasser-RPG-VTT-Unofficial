@@ -1,0 +1,131 @@
+
+<form class="trespasser sheet actor {{cssClass}}" autocomplete="off">
+  <header class="sheet-header">
+    <img class="profile-img" src="{{actor.img}}" data-edit="img" title="{{actor.name}}"/>
+    <div class="header-fields">
+      <h1><input name="name" type="text" value="{{actor.name}}"/></h1>
+      <div class="buttons">
+        <button type="button" data-action="challenge" data-stat="strength">Str Challenge</button>
+        <button type="button" data-action="challenge" data-stat="dexterity">Dex Challenge</button>
+        <button type="button" data-action="challenge" data-stat="knowledge">Know Challenge</button>
+        <button type="button" data-action="challenge" data-stat="empathy">Emp Challenge</button>
+      </div>
+    </div>
+  </header>
+
+  <section class="sheet-body">
+    <fieldset>
+      <legend>Resources</legend>
+      <div class="grid-cols">
+        <label>Stamina</label>
+        <input type="number" name="system.resources.stamina.value" value="{{system.resources.stamina.value}}" data-dtype="Number"/>
+        <span>/</span>
+        <input type="number" name="system.resources.stamina.max" value="{{system.resources.stamina.max}}" data-dtype="Number"/>
+        <label>Wounds</label>
+        <input type="number" name="system.resources.wounds.value" value="{{system.resources.wounds.value}}" data-dtype="Number"/>
+        <span>/</span>
+        <input type="number" name="system.resources.wounds.max" value="{{system.resources.wounds.max}}" data-dtype="Number"/>
+      </div>
+      <p class="hint">Base Max (from Stats): Stamina {{system.resources.stamina.baseMax}} | Wounds {{system.resources.wounds.baseMax}}</p>
+    </fieldset>
+
+    <fieldset>
+      <legend>Core Stats</legend>
+      <div class="grid-cols">
+        <label>Fate</label>
+        <input type="number" name="system.stats.fate" value="{{system.stats.fate}}" data-dtype="Number"/>
+        <label>Move</label>
+        <input type="number" name="system.stats.move" value="{{system.stats.move}}" data-dtype="Number"/>
+        <label>Evade</label>
+        <input type="number" name="system.stats.evade" value="{{system.stats.evade}}" data-dtype="Number"/>
+        <label>Armor</label>
+        <input type="number" name="system.stats.armor" value="{{system.stats.armor}}" data-dtype="Number"/>
+        <label>Strength</label>
+        <input type="number" name="system.stats.strength" value="{{system.stats.strength}}" data-dtype="Number"/>
+        <label>Dexterity</label>
+        <input type="number" name="system.stats.dexterity" value="{{system.stats.dexterity}}" data-dtype="Number"/>
+        <label>Knowledge</label>
+        <input type="number" name="system.stats.knowledge" value="{{system.stats.knowledge}}" data-dtype="Number"/>
+        <label>Empathy</label>
+        <input type="number" name="system.stats.empathy" value="{{system.stats.empathy}}" data-dtype="Number"/>
+        <label>Wounds (Stat)</label>
+        <input type="number" name="system.stats.wounds" value="{{system.stats.wounds}}" data-dtype="Number"/>
+        <label>Stamina (Stat)</label>
+        <input type="number" name="system.stats.stamina" value="{{system.stats.stamina}}" data-dtype="Number"/>
+      </div>
+    </fieldset>
+
+    <nav class="sheet-tabs tabs" data-group="primary">
+      <a class="item" data-tab="stats">Stats</a>
+      <a class="item" data-tab="items">Items</a>
+      <a class="item" data-tab="bio">Bio</a>
+    </nav>
+
+    <div class="tab" data-group="primary" data-tab="stats">
+      <fieldset>
+        <legend>Conditions</legend>
+        <div class="grid-cols">
+          <label>Minor Wounds</label>
+          <input type="number" name="system.derived.minorWounds" value="{{system.derived.minorWounds}}" data-dtype="Number"/>
+          <label>Injuries</label>
+          <input type="number" name="system.derived.injuries" value="{{system.derived.injuries}}" data-dtype="Number"/>
+        </div>
+      </fieldset>
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="items">
+      <div class="inventory-toolbar">
+        <select name="newItemType">
+          <option value="weapon">Weapon</option>
+          <option value="armor">Armor</option>
+          <option value="gear" selected>Gear</option>
+          <option value="ammo">Ammo</option>
+          <option value="grenade">Grenade</option>
+          <option value="occult">Occult</option>
+          <option value="modification">Modification</option>
+          <option value="ability">Ability</option>
+          <option value="radio">Radio</option>
+          <option value="background">Background</option>
+        </select>
+        <button type="button" data-action="create-item"><i class="fas fa-plus"></i> Add Item</button>
+      </div>
+      <table class="inventory">
+        <thead>
+          <tr>
+            <th class="col-img"></th>
+            <th>Name</th>
+            <th class="col-qty">Qty</th>
+            <th class="col-wt">Wt</th>
+            <th class="col-eq">Eqp</th>
+            <th class="col-controls"></th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each actor.items as |it|}}
+          <tr class="item" data-item-id="{{it.id}}">
+            <td class="col-img"><img src="{{it.img}}" width="24" height="24"/></td>
+            <td class="col-name">{{it.name}}</td>
+            <td class="col-qty"><input type="number" data-item-edit="system.quantity" data-dtype="Number" value="{{it.system.quantity}}"/></td>
+            <td class="col-wt"><input type="number" data-item-edit="system.weight" data-dtype="Number" value="{{it.system.weight}}"/></td>
+            <td class="col-eq"><input type="checkbox" data-item-edit="system.equipped" {{checked it.system.equipped}}/></td>
+            <td class="col-controls">
+              <a data-action="edit-item" title="Edit"><i class="fas fa-edit"></i></a>
+              <a data-action="delete-item" title="Delete"><i class="fas fa-trash"></i></a>
+              {{#if (eq it.type 'weapon')}}<a data-action="attack" data-item-id="{{it.id}}" title="Attack"><i class="fas fa-crosshairs"></i></a>{{/if}}
+            </td>
+          </tr>
+          {{/each}}
+        </tbody>
+      </table>
+    </div>
+
+    <div class="tab" data-group="primary" data-tab="bio">
+      <div class="grid-cols">
+        <label>Bio Note</label>
+        <input type="text" name="system.bioNote" value="{{system.bioNote}}"/>
+      </div>
+      <br/>
+      {{editor system.biography target="system.biography" button=true owner=owner editable=editable}}
+    </div>
+  </section>
+</form>

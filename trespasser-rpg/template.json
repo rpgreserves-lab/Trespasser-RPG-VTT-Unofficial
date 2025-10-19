@@ -1,0 +1,179 @@
+{
+  "Actor": {
+    "types": [
+      "trespasser",
+      "npc",
+      "vehicle"
+    ],
+    "templates": {
+      "base": {
+        "biography": "",
+        "bioNote": "",
+        "stats": {
+          "wounds": 2,
+          "stamina": 1,
+          "fate": 0,
+          "move": 3,
+          "evade": 5,
+          "armor": 0,
+          "strength": -5,
+          "dexterity": -5,
+          "knowledge": -5,
+          "empathy": -5
+        },
+        "resources": {
+          "stamina": {
+            "value": 1,
+            "max": 1
+          },
+          "wounds": {
+            "value": 0,
+            "max": 2
+          },
+          "fate": {
+            "value": 0,
+            "max": 0
+          }
+        },
+        "derived": {
+          "minorWounds": 0,
+          "injuries": 0
+        }
+      }
+    },
+    "trespasser": {
+      "templates": [
+        "base"
+      ]
+    },
+    "npc": {
+      "templates": [
+        "base"
+      ]
+    },
+    "vehicle": {
+      "templates": [
+        "base"
+      ],
+      "stats": {
+        "move": 12,
+        "armor": 15
+      }
+    }
+  },
+  "Item": {
+    "types": [
+      "weapon",
+      "armor",
+      "gear",
+      "radio",
+      "ability",
+      "background",
+      "ammo",
+      "modification",
+      "occult",
+      "grenade"
+    ],
+    "templates": {
+      "base": {
+        "description": "",
+        "quantity": 1,
+        "weight": 0,
+        "equipped": false,
+        "activation": {
+          "type": "",
+          "cost": 1
+        },
+        "range": {
+          "value": 0,
+          "units": "m"
+        },
+        "uses": {
+          "value": 0,
+          "max": 0,
+          "per": ""
+        }
+      }
+    },
+    "weapon": {
+      "templates": [
+        "base"
+      ],
+      "category": "rifle",
+      "range": {
+        "value": 10,
+        "units": "m"
+      },
+      "damage": "1d6",
+      "stat": "dexterity",
+      "properties": [],
+      "mag": 0,
+      "fireModes": [
+        "S"
+      ],
+      "ammoType": "standard"
+    },
+    "armor": {
+      "templates": [
+        "base"
+      ],
+      "rating": 4,
+      "properties": []
+    },
+    "gear": {
+      "templates": [
+        "base"
+      ],
+      "limited": 0
+    },
+    "radio": {
+      "templates": [
+        "base"
+      ],
+      "model": "Manpack Standard"
+    },
+    "ability": {
+      "templates": [
+        "base"
+      ],
+      "positive": true,
+      "costBP": 1
+    },
+    "background": {
+      "templates": [
+        "base"
+      ],
+      "name": "Bunker Dweller"
+    },
+    "ammo": {
+      "templates": [
+        "base"
+      ],
+      "count": 10,
+      "ap": 0
+    },
+    "modification": {
+      "templates": [
+        "base"
+      ],
+      "target": "weapon"
+    },
+    "occult": {
+      "templates": [
+        "base"
+      ],
+      "limited": 1
+    },
+    "grenade": {
+      "templates": [
+        "base"
+      ],
+      "range": {
+        "value": 8,
+        "units": "m"
+      },
+      "damage": "2d6",
+      "explosive": 3
+    }
+  }
+}

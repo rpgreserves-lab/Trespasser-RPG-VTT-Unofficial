@@ -1,0 +1,64 @@
+{
+  "name": "trespasser-rpg",
+  "title": "Trespasser RPG (Unofficial)",
+  "type": "system",
+  "description": "Trespasser RPG with editable actor stats, inventory, bio, token bars, and challenge prompt.",
+  "version": "0.1.8b",
+  "compatibility": {
+    "minimum": "11",
+    "verified": "12"
+  },
+  "authors": [
+    {
+      "name": "Daelin Nordaker & M365 Copilot"
+    }
+  ],
+  "esmodules": [
+    "module/system.mjs"
+  ],
+  "styles": [
+    "styles/system.css"
+  ],
+  "packs": [],
+  "languages": [
+    {
+      "lang": "en",
+      "name": "English",
+      "path": "lang/en.json"
+    }
+  ],
+  "template": "template.json",
+  "gridDistance": 1,
+  "gridUnits": "in",
+  "documentTypes": {
+    "Actor": {
+      "trespasser": {
+        "htmlFields": [
+          "biography"
+        ]
+      },
+      "npc": {
+        "htmlFields": [
+          "biography"
+        ]
+      },
+      "vehicle": {
+        "htmlFields": [
+          "biography"
+        ]
+      }
+    },
+    "Item": {
+      "weapon": {},
+      "armor": {},
+      "gear": {},
+      "radio": {},
+      "ability": {},
+      "background": {},
+      "ammo": {},
+      "modification": {},
+      "occult": {},
+      "grenade": {}
+    }
+  }
+}
